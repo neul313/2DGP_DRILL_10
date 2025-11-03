@@ -10,10 +10,13 @@ RUN_SPEED_PPS = (RUN_SPEED_MPS * PIXEL_PER_METER)
 
 TIME_PER_ACTION = 0.5
 ACTION_PER_TIME = 1.0 / TIME_PER_ACTION
-FRAMES_PER_ACTION = 5
+FRAMES_PER_ACTION = 15 #5개가 아니라 15개
+
+
 
 class Bird:
     image = None
+
 
     def __init__(self, x = 100, y = 500):
         if Bird.image == None:
@@ -28,10 +31,10 @@ class Bird:
         #self.image.clip_draw(0, 0, 150, 150, self.x, self.y, 80, 80)
 
         if self.dir == 1:
-            self.image.clip_draw(int(self.frame) * 183, 15, 150, 150, self.x, self.y,80,80)
+            self.image.clip_draw(self.frame * 183, 19, 150, 150, self.x, self.y,80,80)
         elif self.dir == -1:
             flip = 'h'
-            self.image.clip_composite_draw(int(self.frame) * 183, 15, 150, 150, 0, flip, self.x, self.y,80,80)
+            self.image.clip_composite_draw(self.frame * 183, 18, 150, 150, 0, flip, self.x, self.y,80,80)
 
 
     def update(self):
