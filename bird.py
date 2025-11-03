@@ -28,15 +28,17 @@ class Bird:
         self.animation_time = 0
 
     def draw(self):
-        left = (int(self.frame) % 5)*width #가로선 칸 x 시작 좌표
-        bottom = (506 - (int(self.frame) // 3 +1))*height #줄, 새로선
+        col = int(self.frame) % 5
+        row = int(self.frame) // 3
+        left =  col * width #가로선 칸 x 시작 좌표
+        bottom = 506 - (row + 1) * height #줄, 새로선
         # int(self.frame) // 3     // 0,1,2 목적
 
         if self.dir == 1:
             self.image.clip_draw(int(left), int(bottom), int(width), int(height), self.x, self.y,80,80)
         elif self.dir == -1:
             flip = 'h'
-            self.image.clip_composite_draw(self.frame * 183, 18, 150, 150, 0, flip, self.x, self.y,80,80)
+            self.image.clip_composite_draw(int(left), int(bottom), int(width), int(height), 0, flip, self.x, self.y,80,80)
 
 
     def update(self):
