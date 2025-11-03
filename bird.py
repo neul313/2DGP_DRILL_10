@@ -12,7 +12,7 @@ class Bird:
         self.x, self.y, = x, y
 
     def draw(self):
-        self.image.clip_draw(0, 0, 150, 150, self.x, self.y,100,100)
+        self.image.clip_draw(0, 0, 150, 150, self.x, self.y,80,80)
 
     def update(self):
         if self.x > 1600:
