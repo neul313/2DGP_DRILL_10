@@ -24,6 +24,7 @@ class Bird:
         self.animation_time = 0
 
     def draw(self):
+
         self.image.clip_draw(0, 0, 150, 150, self.x, self.y,80,80)
 
 
@@ -32,6 +33,10 @@ class Bird:
         self.frame = int(self.animation_time * FRAMES_PER_ACTION * ACTION_PER_TIME) % FRAMES_PER_ACTION
         D = RUN_SPEED_PPS * game_framework.frame_time
         self.x += self.dir * D
-        if self.x > 1600:
-            game_world.remove_object(self)
-
+        if self.x > 1600 - 80:
+            flip = 'h'
+            self.dir = -1
+            self.image.clip_composite_draw(0, 0, 150, 150, 0, flip, self.x, self.y,80,80)
+        elif self.x < 80:
+            self.dir = 1
+            self.image.clip_draw(0, 0, 150, 150, self.x, self.y,80,80)
