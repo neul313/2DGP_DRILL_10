@@ -12,7 +12,8 @@ TIME_PER_ACTION = 0.5
 ACTION_PER_TIME = 1.0 / TIME_PER_ACTION
 FRAMES_PER_ACTION = 15 #5개가 아니라 15개
 
-
+width = 916/5 #시작
+height = 506/3
 
 class Bird:
     image = None
@@ -27,11 +28,12 @@ class Bird:
         self.animation_time = 0
 
     def draw(self):
-
-        #self.image.clip_draw(0, 0, 150, 150, self.x, self.y, 80, 80)
+        left = (int(self.frame) % 5)*width #가로선 칸 x 시작 좌표
+        bottom = (506 - (int(self.frame) // 3 +1))*height #줄, 새로선
+        # int(self.frame) // 3     // 0,1,2 목적
 
         if self.dir == 1:
-            self.image.clip_draw(self.frame * 183, 19, 150, 150, self.x, self.y,80,80)
+            self.image.clip_draw(int(left), int(bottom), int(width), int(height), self.x, self.y,80,80)
         elif self.dir == -1:
             flip = 'h'
             self.image.clip_composite_draw(self.frame * 183, 18, 150, 150, 0, flip, self.x, self.y,80,80)
