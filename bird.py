@@ -29,7 +29,7 @@ class Bird:
 
     def draw(self):
         col = int(self.frame) % 5
-        row = int(self.frame) // 3
+        row = int(self.frame) // 5
         left =  col * width #가로선 칸 x 시작 좌표
         bottom = 506 - (row + 1) * height #줄, 새로선
         # int(self.frame) // 3     // 0,1,2 목적
